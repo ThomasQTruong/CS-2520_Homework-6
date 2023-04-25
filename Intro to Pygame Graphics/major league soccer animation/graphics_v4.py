@@ -35,6 +35,7 @@ class GraphicsV4:
     cls.generate_clouds(20)
     cls.start_game()
 
+
   @classmethod
   def generate_stars(cls, amount: int):
     """Generates a certain amount of stars.
@@ -51,6 +52,7 @@ class GraphicsV4:
       random_r = random.randrange(1, 2)
       GraphicsData.stars.append([random_x, random_y, random_r, random_r])
 
+
   @classmethod
   def generate_clouds(cls, amount: int):
     """Generates a certain amount of clouds.
@@ -65,6 +67,7 @@ class GraphicsV4:
       random_x = random.randrange(-100, 1600)
       random_y = random.randrange(0, 150)
       GraphicsData.clouds.append([random_x, random_y])
+
 
   @classmethod
   def draw_cloud(cls, x_position: int, y_position: int):
@@ -84,6 +87,7 @@ class GraphicsV4:
                         [x_position + 20, y_position + 8, 10, 10])
     pygame.draw.rect(GraphicsData.SEE_THROUGH, GraphicsData.cloud_color,
                      [x_position + 6, y_position + 8, 18, 10])
+
 
   @classmethod
   def start_game(cls):
@@ -159,6 +163,7 @@ class GraphicsV4:
       #18 yard line goal box with arc above it
       GraphicsDrawer.draw_18_yard_box()
 
+      #score board
       GraphicsDrawer.draw_score_board()
 
       #goal
@@ -191,17 +196,15 @@ class GraphicsV4:
       #pygame.draw.arc(screen, ORANGE, [100, 100, 100, 100], 0, math.pi/2, 1)
       #pygame.draw.arc(screen, BLACK, [100, 100, 100, 100], 0, math.pi/2, 50)
 
-
       # Update screen (Actually draw the picture in the window.)
       pygame.display.flip()
-
 
       # Limit refresh rate of game loop
       GraphicsData.clock.tick(GraphicsData.refresh_rate)
 
-
     # Close window and quit
     pygame.quit()
+
 
 
 if __name__ == "__main__":
