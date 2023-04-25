@@ -1,3 +1,8 @@
+"""Creation of graphics for a major league soccer game.
+
+Draws the graphics for a major league soccer game animation.
+"""
+
 # Imports
 import pygame
 import math
