@@ -1,4 +1,4 @@
-"""Contains tools to draw major league soccer game maps."""
+"""Contains tools used for drawing major league soccer game maps."""
 
 import pygame
 import math
@@ -6,7 +6,7 @@ from graphics_colors import GraphicsColors
 from graphics_data import GraphicsData
 
 class GraphicsDrawer:
-  """Contains tools to draw major league soccer game maps."""
+  """Contains tools used for drawing major league soccer game maps."""
 
   @staticmethod
   def draw_field():
