@@ -7,8 +7,10 @@ from graphics_data import GraphicsData
 
 class GraphicsDrawer:
   """Contains tools to draw major league soccer game maps."""
+
   @staticmethod
   def draw_field():
+    """Draws the soccer field with alternating colors."""
     pygame.draw.rect(GraphicsData.screen, GraphicsData.field_color,
                      [0, 180, 800 , 420])
     pygame.draw.rect(GraphicsData.screen, GraphicsData.stripe_color,
@@ -20,8 +22,10 @@ class GraphicsDrawer:
     pygame.draw.rect(GraphicsData.screen, GraphicsData.stripe_color,
                      [0, 492, 800, 82])
 
+
   @staticmethod
   def draw_fence():
+    """Draws a fence that surrounds the soccer field."""
     y = 170
     for x in range(5, 800, 30):
       pygame.draw.polygon(GraphicsData.screen, GraphicsColors.NIGHT_GRAY,
@@ -46,8 +50,10 @@ class GraphicsDrawer:
       pygame.draw.ellipse(GraphicsData.screen, GraphicsData.sky_color,
                           [530, 45, 40, 40])
 
+
   @staticmethod
   def draw_boundary_lines():
+    """Draws the lines that determine the boundary of the field."""
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
                      [0, 580], [800, 580], 5)
     #left
@@ -59,13 +65,17 @@ class GraphicsDrawer:
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
                      [660, 220], [800, 360], 5)
 
+
   @staticmethod
   def draw_safety_circle():
+    """Draws the safety circle on the field."""
     pygame.draw.ellipse(GraphicsData.screen, GraphicsColors.WHITE,
                         [240, 500, 320, 160], 5)
 
+
   @staticmethod
   def draw_18_yard_box():
+    """Draws the 18 yard goal box with an arc above it."""
     #18 yard goal box
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
                      [260, 220], [180, 300], 5)
@@ -77,8 +87,10 @@ class GraphicsDrawer:
     pygame.draw.arc(GraphicsData.screen, GraphicsColors.WHITE,
                     [330, 280, 140, 40], math.pi, 2 * math.pi, 5)
 
+
   @staticmethod
   def draw_score_board():
+    """Draws the score board."""
     #score board pole
     pygame.draw.rect(GraphicsData.screen, GraphicsColors.GRAY,
                      [390, 120, 20, 70])
@@ -89,8 +101,10 @@ class GraphicsDrawer:
     pygame.draw.rect(GraphicsData.screen, GraphicsColors.WHITE,
                      [302, 42, 198, 88], 2)
 
+
   @staticmethod
   def draw_goal():
+    """Draws the goal."""
     pygame.draw.rect(GraphicsData.screen, GraphicsColors.WHITE,
     [320, 140, 160, 80], 5)
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
@@ -104,8 +118,10 @@ class GraphicsDrawer:
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
     [480, 140], [460, 200], 3)
 
+
   @staticmethod
   def draw_6_yard_box():
+    """Draws the 6 yard goal box."""
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
     [310, 220], [270, 270], 3)
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
@@ -113,8 +129,10 @@ class GraphicsDrawer:
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
     [530, 270], [490, 220], 3)
 
+
   @staticmethod
   def draw_flood_light_1():
+    """Draws the left flood light."""
     #light pole 1
     pygame.draw.rect(GraphicsData.screen, GraphicsColors.GRAY,
                      [150, 60, 20, 140])
@@ -149,8 +167,10 @@ class GraphicsDrawer:
     pygame.draw.line(GraphicsData.screen, GraphicsColors.GRAY,
                     [110, 20], [210, 20], 2)
 
+
   @staticmethod
   def draw_flood_light_2():
+    """Draws the right flood light."""
     #light pole 2
     pygame.draw.rect(GraphicsData.screen, GraphicsColors.GRAY,
                      [630, 60, 20, 140])
@@ -185,8 +205,10 @@ class GraphicsDrawer:
     pygame.draw.line(GraphicsData.screen, GraphicsColors.GRAY,
                      [590, 20], [690, 20], 2)
 
+
   @staticmethod
   def draw_net():
+    """Draws the net for the goal."""
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
                      [325, 140], [341, 200], 1)
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
@@ -324,14 +346,15 @@ class GraphicsDrawer:
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
                      [335, 196], [465, 196], 1)
 
+
   @staticmethod
   def draw_stands():
+    """Draws the stands where people sit."""
     #stands right
     pygame.draw.polygon(GraphicsData.screen, GraphicsColors.RED,
                         [[680, 220], [800, 340], [800, 290], [680, 180]])
     pygame.draw.polygon(GraphicsData.screen, GraphicsColors.WHITE,
                         [[680, 180], [800, 100], [800, 290]])
-
 
     #stands left
     pygame.draw.polygon(GraphicsData.screen, GraphicsColors.RED,
@@ -340,8 +363,10 @@ class GraphicsDrawer:
                         [[120, 180], [0, 100], [0, 290]])
     #people
 
+
   @staticmethod
   def draw_corner_flags():
+    """Draws the corner flags."""
     #corner flag right
     pygame.draw.line(GraphicsData.screen, GraphicsColors.BRIGHT_YELLOW,
                      [140, 220], [135, 190], 3)
