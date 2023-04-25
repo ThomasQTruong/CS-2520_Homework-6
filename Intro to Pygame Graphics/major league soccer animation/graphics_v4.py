@@ -27,14 +27,24 @@ class GraphicsV4:
   [D] - toggle day/night.
   [L] - toggle flood lights.
   """
+
   @classmethod
   def __init__(cls):
-    cls.get_stars(200)
-    cls.get_clouds(20)
+    """Initializes stars[] and clouds[] and create graphics."""
+    cls.generate_stars(200)
+    cls.generate_clouds(20)
     cls.start_game()
 
   @classmethod
-  def get_stars(cls, amount: int):
+  def generate_stars(cls, amount: int):
+    """Generates a certain amount of stars.
+    
+    Stars are generated at random coordinates
+    and stored into stars[] from GraphicsData.
+
+    Args:
+      amount: The amount of stars to create.
+    """
     for _ in range(amount):
       random_x = random.randrange(0, 800)
       random_y = random.randrange(0, 200)
@@ -42,7 +52,15 @@ class GraphicsV4:
       GraphicsData.stars.append([random_x, random_y, random_r, random_r])
 
   @classmethod
-  def get_clouds(cls, amount: int):
+  def generate_clouds(cls, amount: int):
+    """Generates a certain amount of clouds.
+    
+    Clouds are generated at random coordinates
+    and stored into clouds[] from GraphicsData.
+
+    Args:
+      amount: The amount of clouds to create.
+    """
     for _ in range(amount):
       random_x = random.randrange(-100, 1600)
       random_y = random.randrange(0, 150)
@@ -50,6 +68,12 @@ class GraphicsV4:
 
   @classmethod
   def draw_cloud(cls, x_position: int, y_position: int):
+    """Draws a cloud at a certain position.
+    
+    Args:
+      x_position: The X position to draw the cloud.
+      y_position: The Y position to draw the cloud.
+    """
     pygame.draw.ellipse(GraphicsData.SEE_THROUGH, GraphicsData.cloud_color,
                         [x_position, y_position + 8, 10, 10])
     pygame.draw.ellipse(GraphicsData.SEE_THROUGH, GraphicsData.cloud_color,
@@ -63,6 +87,12 @@ class GraphicsV4:
 
   @classmethod
   def start_game(cls):
+    """Creates interactive map.
+    
+    Keybinds can change the map environment.
+    [D] - toggle day/night.
+    [L] - toggle flood lights.
+    """
     while not GraphicsData.done:
       # Event processing (React to key presses, mouse clicks, etc.)
       # for now, we'll just check to see if the X is clicked
@@ -78,9 +108,9 @@ class GraphicsV4:
       # Game logic (Check for collisions, update points, etc.)
       # leave this section alone for now
       if GraphicsData.lights_on:
-        GraphicsData.light_color = GraphicsData.YELLOW
+        GraphicsData.light_color = GraphicsColors.YELLOW
       else:
-        GraphicsData.light_color = GraphicsData.SILVER
+        GraphicsData.light_color = GraphicsColors.SILVER
 
       if GraphicsData.day:
         GraphicsData.sky_color = GraphicsColors.BLUE
