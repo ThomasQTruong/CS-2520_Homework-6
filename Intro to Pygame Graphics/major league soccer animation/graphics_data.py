@@ -1,7 +1,10 @@
-import pygame
-from Color import Color
+"""Contains data used for graphics creation."""
 
-class Data:
+import pygame
+from graphics_colors import GraphicsColors
+
+class GraphicsData:
+  """Contains data used for graphics creation."""
   # Window
   SIZE = (800, 600)
   TITLE = "Major League Soccer"
@@ -29,11 +32,11 @@ class Data:
   SEE_THROUGH.fill((124, 118, 135))
 
   # Initially day
-  light_color = Color.YELLOW
-  sky_color = Color.BLUE
-  field_color = Color.GREEN
-  stripe_color = Color.DAY_GREEN
-  cloud_color = Color.WHITE
+  light_color = GraphicsColors.YELLOW
+  sky_color = GraphicsColors.BLUE
+  field_color = GraphicsColors.GREEN
+  stripe_color = GraphicsColors.DAY_GREEN
+  cloud_color = GraphicsColors.WHITE
 
   # Game loop
   done = False

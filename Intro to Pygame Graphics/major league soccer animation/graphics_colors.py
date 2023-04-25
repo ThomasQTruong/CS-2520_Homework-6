@@ -1,6 +1,13 @@
-# Colors
-''' add colors you use as RGB values here '''
-class Color:
+"""Contains colors used for graphics.
+
+Colors are in tuples as RGB format.
+"""
+
+class GraphicsColors:
+  """Contains colors used for graphics.
+  
+  Colors are in tuples as RGB format.
+  """
   RED = (255, 0, 0)
   GREEN = (52, 166, 36)
   BLUE = (29, 116, 248)
