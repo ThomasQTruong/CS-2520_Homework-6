@@ -24,3 +24,11 @@
 
 # graphics_drawer.py (Utility File)
 - Contains tools used for drawing major league soccer game maps.
+
+# TODO:
+- README.md
+  - List instructions on how to use.
+- *.py
+  - Add/fix comments.
+- graphics_colors.py
+  - Make variables constant if possible in Python.
