@@ -44,8 +44,8 @@
   - Navigate to ```Intro to Pygame Graphics/major league soccer animation/``` directory.
     - Use ```cd [Directory]``` to navigate.
       - ![image](https://user-images.githubusercontent.com/58405482/234469508-05f08bef-efe1-4b7e-982a-7689fdd0d41c.png)
-  - Enter ```python3 graphics_v4.py```.
-    - ![image](https://user-images.githubusercontent.com/58405482/234469597-11294e50-5ffd-4f20-a1a9-0d4d3c031cb4.png)
+    - Enter ```python3 graphics_v4.py```.
+      - ![image](https://user-images.githubusercontent.com/58405482/234469597-11294e50-5ffd-4f20-a1a9-0d4d3c031cb4.png)
 
 # Controls
 - [D] - toggle day/night.
