@@ -11,7 +11,6 @@ keybinds that change the map environment.
 
 # Imports
 import pygame
-import random
 from graphics_colors import GraphicsColors
 from graphics_drawer import GraphicsDrawer
 from graphics_data import GraphicsData
@@ -30,63 +29,9 @@ class GraphicsV4:
 
   @classmethod
   def __init__(cls):
-    """Initializes stars[] and clouds[] and create graphics."""
-    cls.generate_stars(200)
-    cls.generate_clouds(20)
+    """Initializes data and starts creating graphics."""
+    GraphicsData()
     cls.start_game()
-
-
-  @classmethod
-  def generate_stars(cls, amount: int):
-    """Generates a certain amount of stars.
-    
-    Stars are generated at random coordinates
-    and stored into stars[] from GraphicsData.
-
-    Args:
-      amount: The amount of stars to create.
-    """
-    for _ in range(amount):
-      random_x = random.randrange(0, 800)
-      random_y = random.randrange(0, 200)
-      random_r = random.randrange(1, 2)
-      GraphicsData.stars.append([random_x, random_y, random_r, random_r])
-
-
-  @classmethod
-  def generate_clouds(cls, amount: int):
-    """Generates a certain amount of clouds.
-    
-    Clouds are generated at random coordinates
-    and stored into clouds[] from GraphicsData.
-
-    Args:
-      amount: The amount of clouds to create.
-    """
-    for _ in range(amount):
-      random_x = random.randrange(-100, 1600)
-      random_y = random.randrange(0, 150)
-      GraphicsData.clouds.append([random_x, random_y])
-
-
-  @classmethod
-  def draw_cloud(cls, x_position: int, y_position: int):
-    """Draws a cloud at a certain position.
-    
-    Args:
-      x_position: The X position to draw the cloud.
-      y_position: The Y position to draw the cloud.
-    """
-    pygame.draw.ellipse(GraphicsData.SEE_THROUGH, GraphicsData.cloud_color,
-                        [x_position, y_position + 8, 10, 10])
-    pygame.draw.ellipse(GraphicsData.SEE_THROUGH, GraphicsData.cloud_color,
-                        [x_position + 6, y_position + 4, 8, 8])
-    pygame.draw.ellipse(GraphicsData.SEE_THROUGH, GraphicsData.cloud_color,
-                        [x_position + 10, y_position, 16, 16])
-    pygame.draw.ellipse(GraphicsData.SEE_THROUGH, GraphicsData.cloud_color,
-                        [x_position + 20, y_position + 8, 10, 10])
-    pygame.draw.rect(GraphicsData.SEE_THROUGH, GraphicsData.cloud_color,
-                     [x_position + 6, y_position + 8, 18, 10])
 
 
   @classmethod
@@ -99,7 +44,7 @@ class GraphicsV4:
     """
     while not GraphicsData.done:
       # Event processing (React to key presses, mouse clicks, etc.)
-      # for now, we'll just check to see if the X is clicked
+      # for now, we'll just check to see if the X is clicked.
       for event in pygame.event.get():
         if event.type == pygame.QUIT:
           GraphicsData.done = True
@@ -109,13 +54,13 @@ class GraphicsV4:
           elif event.key == pygame.K_d:
             GraphicsData.day = not GraphicsData.day
 
-      # Game logic (Check for collisions, update points, etc.)
-      # leave this section alone for now
+      # Adjust colors based on if light is on or not.
       if GraphicsData.lights_on:
         GraphicsData.light_color = GraphicsColors.YELLOW
       else:
         GraphicsData.light_color = GraphicsColors.SILVER
 
+      # Adjust colors based on if it is day or night.
       if GraphicsData.day:
         GraphicsData.sky_color = GraphicsColors.BLUE
         GraphicsData.field_color = GraphicsColors.GREEN
@@ -127,68 +72,63 @@ class GraphicsV4:
         GraphicsData.stripe_color = GraphicsColors.NIGHT_GREEN
         GraphicsData.cloud_color = GraphicsColors.NIGHT_GRAY
 
-      for c in GraphicsData.clouds:
-        c[0] -= 0.5
-
-        if c[0] < -100:
-          c[0] = random.randrange(800, 1600)
-          c[1] = random.randrange(0, 150)
-
       # Drawing code (Describe the picture. It isn't actually drawn yet.)
       GraphicsData.screen.fill(GraphicsData.sky_color)
       GraphicsData.SEE_THROUGH.fill(GraphicsColors.ck)
       GraphicsData.SEE_THROUGH.set_colorkey(GraphicsColors.ck)
 
+      # Draw stars if it is night time.
       if not GraphicsData.day:
-        #stars
         for s in GraphicsData.stars:
           pygame.draw.ellipse(GraphicsData.screen, GraphicsColors.WHITE, s)
 
-      #field
+      # Draw the playing field.
       GraphicsDrawer.draw_field()
 
-      #fence
+      # Draw fence.
       GraphicsDrawer.draw_fence()
 
-      #sun/moon
+      # Draws sun/moon based on day/night.
       GraphicsDrawer.draw_sun_or_moon()
 
-      for c in GraphicsData.clouds:
-        cls.draw_cloud(c[0], c[1])
-      GraphicsData.screen.blit(GraphicsData.SEE_THROUGH, (0, 0))
+      # Change cloud positions for animation.
+      GraphicsData.adjust_position_of_clouds()
 
-      #out of bounds lines
+      # Draw clouds.
+      GraphicsDrawer.draw_all_clouds()
+
+      # Draw out of bounds lines.
       GraphicsDrawer.draw_boundary_lines()
 
-      #safety circle
+      # Draws the safety circle.
       GraphicsDrawer.draw_safety_circle()
 
-      #18 yard line goal box with arc above it
+      # Draws the 18 yard line goal box with an arc above it.
       GraphicsDrawer.draw_18_yard_box()
 
-      #score board
+      # Draws the score board.
       GraphicsDrawer.draw_score_board()
 
-      #goal
+      # Draws the goal.
       GraphicsDrawer.draw_goal()
 
-      #6 yard line goal box
+      # Draws the net for the goal.
+      GraphicsDrawer.draw_net()
+
+      # Draws the 6 yard line goal box.
       GraphicsDrawer.draw_6_yard_box()
 
-      #flood lights
+      # Draws the flood lights.
       GraphicsDrawer.draw_flood_light_1()
       GraphicsDrawer.draw_flood_light_2()
 
-      #net
-      GraphicsDrawer.draw_net()
-
-      #stands
+      # Draws the stands where people sit.
       GraphicsDrawer.draw_stands()
 
-      #corner flags
+      # Draws the corner flags.
       GraphicsDrawer.draw_corner_flags()
 
-      # DARKNESS
+      # Makes the game dark if it is night and the lights are not on.
       if not GraphicsData.day and not GraphicsData.lights_on:
         GraphicsData.screen.blit(GraphicsData.DARKNESS, (0, 0))
 
