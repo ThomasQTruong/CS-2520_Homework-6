@@ -15,7 +15,7 @@
   - [L] - toggle flood lights.
 
 # graphics_data.py (Utility File)
-- Contains data used for graphics creation.
+- Contains data and functions used for graphics creation.
 
 # graphics_colors.py (Utility File)
 - Contains colors used for graphics.
@@ -28,7 +28,3 @@
 # TODO:
 - README.md
   - List instructions on how to use.
-- *.py
-  - Add/fix comments.
-- graphics_colors.py
-  - Make variables constant if possible in Python.
