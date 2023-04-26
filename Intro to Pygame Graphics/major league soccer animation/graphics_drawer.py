@@ -9,6 +9,25 @@ class GraphicsDrawer:
   """Contains tools used for drawing major league soccer game maps."""
 
   @staticmethod
+  def draw_cloud(x_position: int, y_position: int):
+    """Draws a cloud at a certain position.
+    
+    Args:
+      x_position: The X position to draw the cloud.
+      y_position: The Y position to draw the cloud.
+    """
+    pygame.draw.ellipse(GraphicsData.SEE_THROUGH, GraphicsData.cloud_color,
+                        [x_position, y_position + 8, 10, 10])
+    pygame.draw.ellipse(GraphicsData.SEE_THROUGH, GraphicsData.cloud_color,
+                        [x_position + 6, y_position + 4, 8, 8])
+    pygame.draw.ellipse(GraphicsData.SEE_THROUGH, GraphicsData.cloud_color,
+                        [x_position + 10, y_position, 16, 16])
+    pygame.draw.ellipse(GraphicsData.SEE_THROUGH, GraphicsData.cloud_color,
+                        [x_position + 20, y_position + 8, 10, 10])
+    pygame.draw.rect(GraphicsData.SEE_THROUGH, GraphicsData.cloud_color,
+                     [x_position + 6, y_position + 8, 18, 10])
+
+  @staticmethod
   def draw_field():
     """Draws the soccer field with alternating colors."""
     pygame.draw.rect(GraphicsData.screen, GraphicsData.field_color,
@@ -53,6 +72,14 @@ class GraphicsDrawer:
                           [520, 50, 40, 40])
       pygame.draw.ellipse(GraphicsData.screen, GraphicsData.sky_color,
                           [530, 45, 40, 40])
+
+
+  @classmethod
+  def draw_all_clouds(cls):
+    # Draw clouds.
+    for cloud in GraphicsData.clouds:
+      cls.draw_cloud(cloud[0], cloud[1])
+    GraphicsData.screen.blit(GraphicsData.SEE_THROUGH, (0, 0))
 
 
   @staticmethod
