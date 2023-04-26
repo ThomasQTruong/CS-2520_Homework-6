@@ -41,6 +41,10 @@ class GraphicsDrawer:
       pygame.draw.line(GraphicsData.screen, GraphicsColors.NIGHT_GRAY,
                        [x, y], [x + 800, y], 1)
 
+
+  @staticmethod
+  def draw_sun_or_moon():
+    """Draws the sun if it is day time, draws moon if it is night time."""
     if GraphicsData.day:
       pygame.draw.ellipse(GraphicsData.screen, GraphicsColors.BRIGHT_YELLOW,
                           [520, 50, 40, 40])
