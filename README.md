@@ -11,8 +11,6 @@
 - Displays graphics for a major league soccer game.
 - Utilizes Graphics_Drawer.py to draw the graphics for a major league soccer game animation.
 - Displays the major league soccer game map with keybinds that change the map environment.
-  - [D] - toggle day/night.
-  - [L] - toggle flood lights.
 
 # graphics_data.py (Utility File)
 - Contains data and functions used for graphics creation.
@@ -25,6 +23,26 @@
 # graphics_drawer.py (Utility File)
 - Contains tools used for drawing major league soccer game maps.
 
-# TODO:
-- README.md
-  - List instructions on how to use.
+# Required Installations
+- Python3
+- Pygame
+
+# Usage Guide
+- Windows:
+  - Method 1:
+    - Open graphics_v4.py with Python.
+      - [IMG]
+  - Method 2:
+    - Open command prompt.
+      - [IMG]
+    - Drag graphics_v4.py to command prompt.
+      - [IMG]
+    - Press enter.
+      - [IMG]
+- UNIX:
+  - Type: python3 graphics_v4.py.
+    - [IMG]
+
+# Controls
+- [D] - toggle day/night.
+- [L] - toggle flood lights.
