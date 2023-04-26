@@ -132,12 +132,12 @@ class GraphicsV4:
       if not GraphicsData.day and not GraphicsData.lights_on:
         GraphicsData.screen.blit(GraphicsData.DARKNESS, (0, 0))
 
-      #pygame.draw.polygon(screen, BLACK,
-      #                    [[200, 200], [50,400], [600, 500]], 10)
+      # pygame.draw.polygon(screen, BLACK,
+      #                     [[200, 200], [50,400], [600, 500]], 10)
 
       # Angles for arcs are measured in radians (a pre-cal topic)
-      #pygame.draw.arc(screen, ORANGE, [100, 100, 100, 100], 0, math.pi/2, 1)
-      #pygame.draw.arc(screen, BLACK, [100, 100, 100, 100], 0, math.pi/2, 50)
+      # pygame.draw.arc(screen, ORANGE, [100, 100, 100, 100], 0, math.pi/2, 1)
+      # pygame.draw.arc(screen, BLACK, [100, 100, 100, 100], 0, math.pi/2, 50)
 
       # Update screen (Actually draw the picture in the window.)
       pygame.display.flip()
