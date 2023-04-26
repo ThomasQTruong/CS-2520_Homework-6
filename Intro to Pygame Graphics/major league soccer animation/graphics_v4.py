@@ -109,11 +109,11 @@ class GraphicsV4:
       # Draws the score board.
       GraphicsDrawer.draw_score_board()
 
-      # Draws the goal.
-      GraphicsDrawer.draw_goal()
+      # Draws the frames of the goal.
+      GraphicsDrawer.draw_goal_frame()
 
       # Draws the net for the goal.
-      GraphicsDrawer.draw_net()
+      GraphicsDrawer.draw_goal_net()
 
       # Draws the 6 yard line goal box.
       GraphicsDrawer.draw_6_yard_box()
