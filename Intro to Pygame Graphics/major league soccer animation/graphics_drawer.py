@@ -30,8 +30,10 @@ class GraphicsDrawer:
   @staticmethod
   def draw_field():
     """Draws the soccer field with alternating colors."""
+    # Create field.
     pygame.draw.rect(GraphicsData.screen, GraphicsData.field_color,
                      [0, 180, 800 , 420])
+    # Create stripes on the field.
     pygame.draw.rect(GraphicsData.screen, GraphicsData.stripe_color,
                      [0, 180, 800, 42])
     pygame.draw.rect(GraphicsData.screen, GraphicsData.stripe_color,
@@ -45,29 +47,34 @@ class GraphicsDrawer:
   @staticmethod
   def draw_fence():
     """Draws a fence that surrounds the soccer field."""
+    # Draw pillars/stabilizers.
     y = 170
     for x in range(5, 800, 30):
       pygame.draw.polygon(GraphicsData.screen, GraphicsColors.NIGHT_GRAY,
                           [[x + 2, y], [x + 2, y + 15], [x, y + 15], [x, y]])
 
-    y = 170
+    # Draw vertical bars.
     for x in range(5, 800, 3):
       pygame.draw.line(GraphicsData.screen, GraphicsColors.NIGHT_GRAY,
                        [x, y], [x, y + 15], 1)
 
+    # Draw horizontal bars.
     x = 0
     for y in range(170, 185, 4):
       pygame.draw.line(GraphicsData.screen, GraphicsColors.NIGHT_GRAY,
                        [x, y], [x + 800, y], 1)
 
 
+
   @staticmethod
   def draw_sun_or_moon():
     """Draws the sun if it is day time, draws moon if it is night time."""
     if GraphicsData.day:
+      # Draw sun.
       pygame.draw.ellipse(GraphicsData.screen, GraphicsColors.BRIGHT_YELLOW,
                           [520, 50, 40, 40])
     else:
+      # Draw moon.
       pygame.draw.ellipse(GraphicsData.screen, GraphicsColors.WHITE,
                           [520, 50, 40, 40])
       pygame.draw.ellipse(GraphicsData.screen, GraphicsData.sky_color,
@@ -85,14 +92,16 @@ class GraphicsDrawer:
   @staticmethod
   def draw_boundary_lines():
     """Draws the lines that determine the boundary of the field."""
+    # Bottom boundary line.
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
                      [0, 580], [800, 580], 5)
-    #left
+    # Left boundary line.
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
                      [0, 360], [140, 220], 5)
+    # Top boundary line (closest to goal).
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
                      [140, 220], [660, 220], 3)
-    #right
+    # Right boundary line.
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
                      [660, 220], [800, 360], 5)
 
@@ -107,14 +116,14 @@ class GraphicsDrawer:
   @staticmethod
   def draw_18_yard_box():
     """Draws the 18 yard goal box with an arc above it."""
-    #18 yard goal box
+    # Draw 18 yard goal box: left, middle, right.
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
                      [260, 220], [180, 300], 5)
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
                      [180, 300], [620, 300], 3)
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
                      [620, 300], [540, 220], 5)
-    #arc above the box
+    # Draw arc above the box.
     pygame.draw.arc(GraphicsData.screen, GraphicsColors.WHITE,
                     [330, 280, 140, 40], math.pi, 2 * math.pi, 5)
 
@@ -122,11 +131,10 @@ class GraphicsDrawer:
   @staticmethod
   def draw_score_board():
     """Draws the score board."""
-    #score board pole
+    # Draw score board pole.
     pygame.draw.rect(GraphicsData.screen, GraphicsColors.GRAY,
                      [390, 120, 20, 70])
-
-    #score board
+    # Draw score board.
     pygame.draw.rect(GraphicsData.screen, GraphicsColors.BLACK,
                      [300, 40, 200, 90])
     pygame.draw.rect(GraphicsData.screen, GraphicsColors.WHITE,
@@ -134,8 +142,8 @@ class GraphicsDrawer:
 
 
   @staticmethod
-  def draw_goal():
-    """Draws the goal."""
+  def draw_goal_frame():
+    """Draws the frames of the goal."""
     pygame.draw.rect(GraphicsData.screen, GraphicsColors.WHITE,
     [320, 140, 160, 80], 5)
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
@@ -151,94 +159,7 @@ class GraphicsDrawer:
 
 
   @staticmethod
-  def draw_6_yard_box():
-    """Draws the 6 yard goal box."""
-    pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
-    [310, 220], [270, 270], 3)
-    pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
-    [270, 270], [530, 270], 2)
-    pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
-    [530, 270], [490, 220], 3)
-
-
-  @staticmethod
-  def draw_flood_light_1():
-    """Draws the left flood light."""
-    #light pole 1
-    pygame.draw.rect(GraphicsData.screen, GraphicsColors.GRAY,
-                     [150, 60, 20, 140])
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsColors.GRAY,
-                        [150, 195, 20, 10])
-
-    #lights
-    pygame.draw.line(GraphicsData.screen, GraphicsColors.GRAY,
-                     [110, 60], [210, 60], 2)
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
-                        [110, 40, 20, 20])
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
-                        [130, 40, 20, 20])
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
-                        [150, 40, 20, 20])
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
-                        [170, 40, 20, 20])
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
-                        [190, 40, 20, 20])
-    pygame.draw.line(GraphicsData.screen, GraphicsColors.GRAY,
-                     [110, 40], [210, 40], 2)
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
-                        [110, 20, 20, 20])
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
-                        [130, 20, 20, 20])
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
-                        [150, 20, 20, 20])
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
-                        [170, 20, 20, 20])
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
-                        [190, 20, 20, 20])
-    pygame.draw.line(GraphicsData.screen, GraphicsColors.GRAY,
-                    [110, 20], [210, 20], 2)
-
-
-  @staticmethod
-  def draw_flood_light_2():
-    """Draws the right flood light."""
-    #light pole 2
-    pygame.draw.rect(GraphicsData.screen, GraphicsColors.GRAY,
-                     [630, 60, 20, 140])
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsColors.GRAY,
-                        [630, 195, 20, 10])
-
-    #lights
-    pygame.draw.line(GraphicsData.screen, GraphicsColors.GRAY,
-                     [590, 60], [690, 60], 2)
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
-                        [590, 40, 20, 20])
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
-                        [610, 40, 20, 20])
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
-                        [630, 40, 20, 20])
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
-                        [650, 40, 20, 20])
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
-                        [670, 40, 20, 20])
-    pygame.draw.line(GraphicsData.screen, GraphicsColors.GRAY,
-                     [590, 40], [690, 40], 2)
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
-                        [590, 20, 20, 20])
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
-                        [610, 20, 20, 20])
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
-                        [630, 20, 20, 20])
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
-                        [650, 20, 20, 20])
-    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
-                        [670, 20, 20, 20])
-    pygame.draw.line(GraphicsData.screen, GraphicsColors.GRAY,
-                     [590, 20], [690, 20], 2)
-
-
-  @staticmethod
-  def draw_net():
+  def draw_goal_net():
     """Draws the net for the goal."""
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
                      [325, 140], [341, 200], 1)
@@ -310,8 +231,7 @@ class GraphicsDrawer:
                      [470, 140], [456, 200], 1)
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
                      [475, 140], [459, 200], 1)
-
-    #net part 2
+    # Net part 2.
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
                      [320, 140], [324, 216], 1)
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
@@ -328,8 +248,7 @@ class GraphicsDrawer:
                      [320, 140], [336, 204], 1)
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
                      [320, 140], [338, 202], 1)
-
-    #net part 3
+    # Net part 3.
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
                      [480, 140], [476, 216], 1)
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
@@ -346,8 +265,7 @@ class GraphicsDrawer:
                      [480, 140], [464, 204], 1)
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
                      [480, 140], [462, 202], 1)
-
-    #net part 4
+    # Net part 4.
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
                      [324, 144], [476, 144], 1)
     pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
@@ -379,32 +297,120 @@ class GraphicsDrawer:
 
 
   @staticmethod
+  def draw_6_yard_box():
+    """Draws the 6 yard goal box."""
+    # Left line.
+    pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
+    [310, 220], [270, 270], 3)
+    # Middle line.
+    pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
+    [270, 270], [530, 270], 2)
+    # Right line.
+    pygame.draw.line(GraphicsData.screen, GraphicsColors.WHITE,
+    [530, 270], [490, 220], 3)
+
+
+  @staticmethod
+  def draw_flood_light_1():
+    """Draws the left flood light."""
+    # Draw light pole.
+    pygame.draw.rect(GraphicsData.screen, GraphicsColors.GRAY,
+                     [150, 60, 20, 140])
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsColors.GRAY,
+                        [150, 195, 20, 10])
+    # Draw lights.
+    pygame.draw.line(GraphicsData.screen, GraphicsColors.GRAY,
+                     [110, 60], [210, 60], 2)
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
+                        [110, 40, 20, 20])
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
+                        [130, 40, 20, 20])
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
+                        [150, 40, 20, 20])
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
+                        [170, 40, 20, 20])
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
+                        [190, 40, 20, 20])
+    pygame.draw.line(GraphicsData.screen, GraphicsColors.GRAY,
+                     [110, 40], [210, 40], 2)
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
+                        [110, 20, 20, 20])
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
+                        [130, 20, 20, 20])
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
+                        [150, 20, 20, 20])
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
+                        [170, 20, 20, 20])
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
+                        [190, 20, 20, 20])
+    pygame.draw.line(GraphicsData.screen, GraphicsColors.GRAY,
+                    [110, 20], [210, 20], 2)
+
+
+  @staticmethod
+  def draw_flood_light_2():
+    """Draws the right flood light."""
+    # Draw light pole.
+    pygame.draw.rect(GraphicsData.screen, GraphicsColors.GRAY,
+                     [630, 60, 20, 140])
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsColors.GRAY,
+                        [630, 195, 20, 10])
+    # Draw lights.
+    pygame.draw.line(GraphicsData.screen, GraphicsColors.GRAY,
+                     [590, 60], [690, 60], 2)
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
+                        [590, 40, 20, 20])
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
+                        [610, 40, 20, 20])
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
+                        [630, 40, 20, 20])
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
+                        [650, 40, 20, 20])
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
+                        [670, 40, 20, 20])
+    pygame.draw.line(GraphicsData.screen, GraphicsColors.GRAY,
+                     [590, 40], [690, 40], 2)
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
+                        [590, 20, 20, 20])
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
+                        [610, 20, 20, 20])
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
+                        [630, 20, 20, 20])
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
+                        [650, 20, 20, 20])
+    pygame.draw.ellipse(GraphicsData.screen, GraphicsData.light_color,
+                        [670, 20, 20, 20])
+    pygame.draw.line(GraphicsData.screen, GraphicsColors.GRAY,
+                     [590, 20], [690, 20], 2)
+
+
+  @staticmethod
   def draw_stands():
     """Draws the stands where people sit."""
-    #stands right
+    # Draw right stand.
     pygame.draw.polygon(GraphicsData.screen, GraphicsColors.RED,
                         [[680, 220], [800, 340], [800, 290], [680, 180]])
     pygame.draw.polygon(GraphicsData.screen, GraphicsColors.WHITE,
                         [[680, 180], [800, 100], [800, 290]])
 
-    #stands left
+    # Draw left stand.
     pygame.draw.polygon(GraphicsData.screen, GraphicsColors.RED,
                         [[120, 220], [0, 340], [0, 290], [120, 180]])
     pygame.draw.polygon(GraphicsData.screen, GraphicsColors.WHITE,
                         [[120, 180], [0, 100], [0, 290]])
-    #people
+    # Draw people [WIP].
 
 
   @staticmethod
   def draw_corner_flags():
     """Draws the corner flags."""
-    #corner flag right
+    # Draw right corner flag.
     pygame.draw.line(GraphicsData.screen, GraphicsColors.BRIGHT_YELLOW,
                      [140, 220], [135, 190], 3)
     pygame.draw.polygon(GraphicsData.screen, GraphicsColors.RED,
                         [[132, 190], [125, 196], [135, 205]])
 
-    #corner flag left
+    # Draw left corner flag.
     pygame.draw.line(GraphicsData.screen, GraphicsColors.BRIGHT_YELLOW,
                      [660, 220], [665, 190], 3)
     pygame.draw.polygon(GraphicsData.screen, GraphicsColors.RED,
