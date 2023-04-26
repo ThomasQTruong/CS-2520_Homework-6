@@ -150,6 +150,9 @@ class GraphicsV4:
       #fence
       GraphicsDrawer.draw_fence()
 
+      #sun/moon
+      GraphicsDrawer.draw_sun_or_moon()
+
       for c in GraphicsData.clouds:
         cls.draw_cloud(c[0], c[1])
       GraphicsData.screen.blit(GraphicsData.SEE_THROUGH, (0, 0))
