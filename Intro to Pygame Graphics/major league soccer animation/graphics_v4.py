@@ -79,8 +79,8 @@ class GraphicsV4:
 
       # Draw stars if it is night time.
       if not GraphicsData.day:
-        for s in GraphicsData.stars:
-          pygame.draw.ellipse(GraphicsData.screen, GraphicsColors.WHITE, s)
+        for star in GraphicsData.stars:
+          pygame.draw.ellipse(GraphicsData.screen, GraphicsColors.WHITE, star)
 
       # Draw the playing field.
       GraphicsDrawer.draw_field()
